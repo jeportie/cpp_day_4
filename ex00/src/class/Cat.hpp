@@ -13,4 +13,21 @@
 #ifndef CAT_HPP
 # define CAT_HPP
 
+# include <iostream>
+
+class Cat
+{
+public:
+	Cat(void);
+	Cat(const Cat& src);
+	~Cat(void);
+
+	Cat& operator=(const Cat& rhs);
+
+private:
+};
+
+// Overload operator<< for output streaming
+std::ostream & operator<<(std::ostream& out, const Cat& in);
+
 #endif  // ********************************************************** CAT_HPP //
