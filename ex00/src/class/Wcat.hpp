@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Wcat.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 15:46:07 by jeportie          #+#    #+#             */
-/*   Updated: 2025/04/15 16:13:06 by jeportie         ###   ########.fr       */
+/*   Created: 2025/04/16 09:57:47 by jeportie          #+#    #+#             */
+/*   Updated: 2025/04/16 09:58:47 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef WCAT_HPP
+# define WCAT_HPP
 
-#include "Animal.hpp"
+#include "Wanimal.hpp"
 
-class Dog : public Animal
+class Wcat : public Wanimal
 {
 public:
-	Dog(void);
-	Dog(const Dog& src);
-	virtual ~Dog(void);
+	Wcat(void);
+	Wcat(const Wcat& src);
+	~Wcat(void);
 
-	Dog& operator=(const Dog& rhs);
+	Wcat& operator=(const Wcat& rhs);
 
 	virtual void makeSound(void) const;
 };
 
-#endif  // ********************************************************** DOG_HPP //
+#endif  // ********************************************************* WCAT_HPP //

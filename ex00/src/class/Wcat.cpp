@@ -1,50 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Wcat.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 13:56:25 by jeportie          #+#    #+#             */
-/*   Updated: 2025/04/15 13:56:28 by jeportie         ###   ########.fr       */
+/*   Created: 2025/04/16 09:58:58 by jeportie          #+#    #+#             */
+/*   Updated: 2025/04/16 09:59:42 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <iostream>
 #include <ostream>
-#include "Cat.hpp"
-#include "Animal.hpp"
+#include "Wcat.hpp"
+#include "Wanimal.hpp"
 
-Cat::Cat(void) : Animal()
+Wcat::Wcat(void) : Wanimal()
 {
-	std::cout << "[Cat] - default constructor called - " << std::endl;
-	Cat::setType("Cat");
+	std::cout << "[Wcat] - default constructor called - " << std::endl;
+	Wcat::setType("Wcat");
 }
 
-Cat::Cat(const Cat& src) : Animal(src)
+Wcat::Wcat(const Wcat& src) : Wanimal(src)
 {
-	std::cout << "[Cat] - copy constructor called - " << std::endl;
+	std::cout << "[Wcat] - copy constructor called - " << std::endl;
 	*this = src;
 	return;
 }
 
-Cat::~Cat(void)
+Wcat::~Wcat(void)
 {
-	std::cout << "[Cat] - destructor called - " << std::endl;
+	std::cout << "[Wcat] - destructor called - " << std::endl;
 	return;
 }
 
-Cat& Cat::operator=(const Cat& rhs)
+Wcat & Wcat::operator=(const Wcat& rhs)
 {
-	std::cout << "[Cat] - copy assignment operator called - " << std::endl;
+	std::cout << "[Wcat] - copy assignment operator called - " << std::endl;
 	if (this != &rhs)
 		this->_type = rhs.getType();
 	return (*this);
 }
 
-void Cat::makeSound(void) const
+void Wcat::makeSound(void) const
 {
 	std::cout << _type << ": Meeeeoooowww..." << std::endl;
 	return;
 }
+

@@ -16,7 +16,7 @@
 # include "Animal.hpp"
 
 Animal::Animal(void)
-: _type("animal")
+: _type("Animal")
 {
 	std::cout << "[Animal] - default constructor called -" << std::endl;
 }
@@ -54,8 +54,8 @@ std::string Animal::getType(void) const { return (_type); }
 
 void Animal::setType(std::string type) { _type = type; }
 
-void Animal::makeSound(void)
+void Animal::makeSound(void) const
 {
-	std::cout << _type << " is making an undefined sound..." << std::endl;
+	std::cout << _type << ": ** Unknown Sound ** ..." << std::endl;
 	return;
 }

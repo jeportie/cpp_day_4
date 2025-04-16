@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = DiamondTrap
+NAME = Animals
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 VALFLAGS = --leak-check=full
@@ -23,10 +23,11 @@ ARGS=$(filter-out $@,$(MAKECMDGOALS))
 #### BEGIN AUTO GENERATED FILES ###
 # List of source files:
 SRC = \
-  src/class/ClapTrap.cpp \
-  src/class/FragTrap.cpp \
-  src/class/ScavTrap.cpp \
-  src/class/DiamondTrap.cpp 
+  src/class/Wcat.cpp \
+  src/class/Dog.cpp \
+  src/class/Wanimal.cpp \
+  src/class/Animal.cpp \
+  src/class/Cat.cpp 
 ### END AUTO GENERATED FILES ###
 
 # Create object for main.cpp

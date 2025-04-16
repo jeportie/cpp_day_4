@@ -6,21 +6,23 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 13:56:35 by jeportie          #+#    #+#             */
-/*   Updated: 2025/04/15 16:13:14 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/04/16 09:55:05 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-# include <iostream>
-# include <ostream>
-# include "Dog.hpp"
+#include <iostream>
+#include <ostream>
+#include "Dog.hpp"
+#include "Animal.hpp"
 
-Dog::Dog(void)
+Dog::Dog(void) : Animal()
 {
 	std::cout << "[Dog] - default constructor called - " << std::endl;
+	Dog::setType("Dog");
 }
 
-Dog::Dog(const Dog& src)
+Dog::Dog(const Dog& src) : Animal()
 {
 	std::cout << "[Dog] - copy constructor called - " << std::endl;
 	*this = src;
@@ -33,17 +35,18 @@ Dog::~Dog(void)
 	return;
 }
 
-Dog & Dog::operator=(const Dog& rhs)
+Dog& Dog::operator=(const Dog& rhs)
 {
 	std::cout << "[Dog] - copy assignment operator called - " << std::endl;
-//	if (this != &rhs)
-//		this->_foo = rhs.getFoo();
+	if (this != &rhs)
+		this->_type = rhs.getType();
 	return (*this);
 }
 
-//std::ostream & operator<<(std::ostream & out, const Dog& in)
-//{
-	//out << "The value of _foo is : " << in.getFoo();
-	//return (out);
-//}
+void Dog::makeSound(void) const
+{
+	std::cout << _type << ": Ouaf! Ouaf!..." << std::endl;
+	return;
+}
+
 

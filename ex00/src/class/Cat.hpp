@@ -13,21 +13,18 @@
 #ifndef CAT_HPP
 # define CAT_HPP
 
-# include <iostream>
+#include "Animal.hpp"
 
-class Cat
+class Cat : public Animal
 {
 public:
 	Cat(void);
 	Cat(const Cat& src);
-	~Cat(void);
+	virtual ~Cat(void);
 
 	Cat& operator=(const Cat& rhs);
 
-private:
+	virtual void makeSound(void) const;
 };
-
-// Overload operator<< for output streaming
-std::ostream & operator<<(std::ostream& out, const Cat& in);
 
 #endif  // ********************************************************** CAT_HPP //

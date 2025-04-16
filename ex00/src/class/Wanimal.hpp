@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Wanimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 13:55:35 by jeportie          #+#    #+#             */
-/*   Updated: 2025/04/15 14:47:59 by jeportie         ###   ########.fr       */
+/*   Created: 2025/04/16 09:49:53 by jeportie          #+#    #+#             */
+/*   Updated: 2025/04/16 09:50:50 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef WANIMAL_HPP
+# define WANIMAL_HPP
 
 # include <iostream>
 
-class Animal
+class Wanimal
 {
 public:
-	Animal(void);
-	Animal(std::string const type);
-	Animal(const Animal& src);
-	virtual ~Animal(void);
+	Wanimal(void);
+	Wanimal(std::string const type);
+	Wanimal(const Wanimal& src);
+	~Wanimal(void);
 
-	Animal&		 operator=(const Animal& rhs);
+	Wanimal& operator=(const Wanimal& rhs);
 
 	std::string	 getType(void) const;
 	void		 setType(std::string type);
 
-	virtual void makeSound(void) const;
+	void makeSound(void) const;
 
 protected:
 	std::string _type;
 };
 
 // Overload operator<< for output streaming
-std::ostream & operator<<(std::ostream& out, const Animal& in);
+std::ostream & operator<<(std::ostream& out, const Wanimal& in);
 
-#endif  // ******************************************************* ANIMAL_HPP //
+#endif  // ****************************************************** WANIMAL_HPP //
