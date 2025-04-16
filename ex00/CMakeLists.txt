@@ -19,13 +19,12 @@ set(CMAKE_CXX_STANDARD 98)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror -Wshadow")
 
-# Find all .cpp sources starting from root, explicitly excluding 'build' directory
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/*.cpp")
+# Find all source files for the main executable
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/src/*.cpp")
 list(FILTER SOURCES EXCLUDE REGEX "^${CMAKE_SOURCE_DIR}/build/.*")
-list(FILTER SOURCES EXCLUDE REGEX "^${CMAKE_SOURCE_DIR}/tests/.*") # Exclude tests
 
 # Define executable and sources
-add_executable(${PROJECT_NAME} ${SOURCES})
+add_executable(${PROJECT_NAME} ${SOURCES} main.cpp)
 
 # Set output directories to match your Makefile structure
 set_target_properties(${PROJECT_NAME} PROPERTIES
@@ -39,9 +38,25 @@ enable_testing()
 find_package(GTest REQUIRED)
 include(GoogleTest)
 
-# Test executable
-file(GLOB TEST_SOURCES "${CMAKE_SOURCE_DIR}/tests/*.cpp")
+# Get source files for tests (excluding main.cpp)
+file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/src/*.cpp")
 
-include(GoogleTest)
+# Create AnimalTest executable
+add_executable(AnimalTest 
+    test/AnimalTest.cpp
+    ${TEST_SOURCES}
+)
+target_link_libraries(AnimalTest GTest::GTest GTest::Main)
+target_include_directories(AnimalTest PRIVATE ${CMAKE_SOURCE_DIR}/src)
+
+# Create CatTest executable
+add_executable(CatTest 
+    test/CatTest.cpp
+    ${TEST_SOURCES}
+)
+target_link_libraries(CatTest GTest::GTest GTest::Main)
+target_include_directories(CatTest PRIVATE ${CMAKE_SOURCE_DIR}/src)
+
+# Discover tests
 gtest_discover_tests(AnimalTest)
 gtest_discover_tests(CatTest)
