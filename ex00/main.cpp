@@ -30,19 +30,20 @@ i->makeSound(); //will output the cat sound!
 j->makeSound();
 meta->makeSound();
 
+delete meta;
+delete j;
+delete i;
+
 const Wanimal* wmeta = new Wanimal();
 const Wanimal* wi = new Wcat();
 
 std::cout << wi->getType() << " " << std::endl;
 
 wi->makeSound(); //will output the animal sound!
-meta->makeSound();
+wmeta->makeSound();
 
 // Clean up to avoid memory leaks
-delete meta;
 delete wmeta;
-delete j;
-delete i;
 delete wi;
 
 return 0;

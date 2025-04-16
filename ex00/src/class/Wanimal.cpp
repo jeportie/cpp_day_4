@@ -39,7 +39,7 @@ Wanimal::~Wanimal(void)
 	return;
 }
 
-Wanimal & Wanimal::operator=(const Wanimal& rhs)
+Wanimal& Wanimal::operator=(const Wanimal& rhs)
 {
 	std::cout << "[Wanimal] - copy assignment operator called -" << std::endl;
 	if (this != &rhs)

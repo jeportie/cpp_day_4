@@ -24,7 +24,7 @@ public:
 
 	Wcat& operator=(const Wcat& rhs);
 
-	virtual void makeSound(void) const;
+	void makeSound(void) const;
 };
 
 #endif  // ********************************************************* WCAT_HPP //
