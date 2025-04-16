@@ -19,7 +19,7 @@
 Dog::Dog(void) : Animal()
 {
 	std::cout << "[Dog] - default constructor called - " << std::endl;
-	Dog::setType("Dog");
+	this->_type = "Dog";
 }
 
 Dog::Dog(const Dog& src) : Animal()

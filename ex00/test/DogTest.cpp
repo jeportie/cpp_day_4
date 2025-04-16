@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   CatTest.cpp                                        :+:      :+:    :+:   */
+/*   DogTest.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,38 +11,39 @@
 /* ************************************************************************** */
 
 #include <gtest/gtest.h>
-#include "../src/class/Cat.hpp"
+#include "../src/class/Dog.hpp"
 
-// Test the default constructor of Cat
-TEST(CatTest, DefaultConstructor)
+// Test the default constructor of Dog
+TEST(DogTest, DefaultConstructor)
 {
-    Cat cat;
-    EXPECT_EQ(cat.getType(), "Cat");
+    Dog cat;
+    EXPECT_EQ(cat.getType(), "Dog");
 }
 
-// Test the copy constructor of Cat
-TEST(CatTest, CopyConstructor)
+// Test the copy constructor of Dog
+TEST(DogTest, CopyConstructor)
 {
-    Cat original;
-    Cat copy(original);
-    EXPECT_EQ(copy.getType(), "Cat");
+    Dog original;
+    Dog copy(original);
+    EXPECT_EQ(copy.getType(), "Dog");
 }
 
-// Test the assignment operator of Cat
-TEST(CatTest, AssignmentOperator)
+// Test the assignment operator of Dog
+TEST(DogTest, AssignmentOperator)
 {
-    Cat original;
-    Cat copy;
+    Dog original;
+    Dog copy;
     copy = original;
-    EXPECT_EQ(copy.getType(), "Cat");
+    EXPECT_EQ(copy.getType(), "Dog");
 }
 
-// Test the makeSound method of Cat
-TEST(CatTest, MakeSound)
+// Test the makeSound method of Dog
+TEST(DogTest, MakeSound)
 {
-    Cat cat;
+    Dog cat;
     testing::internal::CaptureStdout();
     cat.makeSound();
     std::string output = testing::internal::GetCapturedStdout();
-    EXPECT_EQ(output, "Cat: Meeeeoooowww...\n");
+    EXPECT_EQ(output, "Dog: Ouaf! Ouaf!...\n");
 }
+

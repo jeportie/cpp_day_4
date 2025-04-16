@@ -19,7 +19,7 @@
 Wcat::Wcat(void) : Wanimal()
 {
 	std::cout << "[Wcat] - default constructor called - " << std::endl;
-	Wcat::setType("Wcat");
+	this->_type = "Wcat";
 }
 
 Wcat::Wcat(const Wcat& src) : Wanimal(src)

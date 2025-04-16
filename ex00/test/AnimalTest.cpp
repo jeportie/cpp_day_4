@@ -27,6 +27,14 @@ TEST(AnimalTest, ParametricConstructor)
     EXPECT_EQ(animal.getType(), "Dog");
 }
 
+// Test the copy constructor of Animal
+TEST(AnimalTest, CopyConstructor)
+{
+    Animal original;
+    Animal copy(original);
+    EXPECT_EQ(copy.getType(), "Animal");
+}
+
 // Test the makeSound method of Animal
 TEST(AnimalTest, MakeSound)
 {
