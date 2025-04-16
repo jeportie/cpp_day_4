@@ -6,7 +6,7 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 14:48:08 by jeportie          #+#    #+#              #
-#    Updated: 2025/04/16 15:01:03 by jeportie         ###   ########.fr        #
+#    Updated: 2025/04/16 15:09:08 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,4 +43,5 @@ include(GoogleTest)
 file(GLOB TEST_SOURCES "${CMAKE_SOURCE_DIR}/tests/*.cpp")
 
 include(GoogleTest)
-gtest_discover_tests(test_megaphone)
+gtest_discover_tests(AnimalTest)
+gtest_discover_tests(CatTest)
