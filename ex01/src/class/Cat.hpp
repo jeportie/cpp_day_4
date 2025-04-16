@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:12:16 by jeportie          #+#    #+#             */
-/*   Updated: 2025/04/16 13:05:09 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:10:13 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	virtual void makeSound(void) const;
 private:
 
-	Brain* brain;
+	Brain* _brain;
 };
 
 #endif  // ********************************************************** CAT_HPP //

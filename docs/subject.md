@@ -186,3 +186,56 @@ in the code above, the WrongCat should output the WrongAnimal sound.
 ```
 Implement and turn in more tests than the ones given above.
 ```
+# Chapter IV
+
+# Exercise 01: I don’t want to set the
+
+# world on fire
+
+```
+Exercise : 01
+```
+```
+I don’t want to set the world on fire
+Turn-in directory : ex 01 /
+Files to turn in :Files from previous exercise + *.cpp, *.{h, hpp}
+Forbidden functions :None
+```
+```
+Constructors and destructors of each class must display specific messages.
+```
+Implement a **Brain** class. It contains an array of 100std::stringcalledideas.
+This way, Dog and Cat will have a privateBrain*attribute.
+Upon construction, Dog and Cat will create their Brain usingnew Brain();
+Upon destruction, Dog and Cat willdeletetheir Brain.
+
+In your main function, create and fill an array of **Animal** objects. Half of it will
+be **Dog** objects and the other half will be **Cat** objects. At the end of your program
+execution, loop over this array and delete every Animal. You must delete directly dogs
+and cats as Animals. The appropriate destructors must be called in the expected order.
+
+```
+Don’t forget to check for memory leaks.
+```
+A copy of a Dog or a Cat mustn’t be shallow. Thus, you have to test that your copies
+are deep copies!
+
+
+C++ - Module 04 Subtype Polymorphism, Abstract Classes, and Interfaces
+
+```
+int main()
+{
+const Animal* j = new Dog();
+const Animal* i = new Cat();
+```
+```
+delete j; //should not create a leak
+delete i;
+...
+return 0;
+}
+```
+```
+Implement and turn in more tests than the ones given above.
+```
