@@ -6,13 +6,13 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/06 08:55:40 by jeportie          #+#    #+#              #
-#    Updated: 2025/04/11 13:43:08 by jeportie         ###   ########.fr        #
+#    Updated: 2025/04/16 14:56:32 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Animals
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98
 VALFLAGS = --leak-check=full
 OUTDIR = bin
 SRCDIR = src

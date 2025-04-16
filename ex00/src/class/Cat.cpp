@@ -16,10 +16,11 @@
 #include "Cat.hpp"
 #include "Animal.hpp"
 
-Cat::Cat(void) : Animal()
+Cat::Cat(void)
+: Animal()
 {
 	std::cout << "[Cat] - default constructor called - " << std::endl;
-	Cat::setType("Cat");
+	this->_type = "Cat";
 }
 
 Cat::Cat(const Cat& src) : Animal(src)

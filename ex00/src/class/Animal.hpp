@@ -13,7 +13,7 @@
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
-# include <iostream>
+# include <string>
 
 class Animal
 {
@@ -33,8 +33,5 @@ public:
 protected:
 	std::string _type;
 };
-
-// Overload operator<< for output streaming
-std::ostream & operator<<(std::ostream& out, const Animal& in);
 
 #endif  // ******************************************************* ANIMAL_HPP //

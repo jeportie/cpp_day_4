@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 # include <iostream>
 # include <ostream>
 # include "Animal.hpp"
@@ -42,12 +41,6 @@ Animal & Animal::operator=(const Animal& rhs)
 	if (this != &rhs)
 		this->_type = rhs.getType();
 	return (*this);
-}
-
-std::ostream & operator<<(std::ostream & out, const Animal& in)
-{
-	out << "The value of _type is : " << in.getType();
-	return (out);
 }
 
 std::string Animal::getType(void) const { return (_type); }
