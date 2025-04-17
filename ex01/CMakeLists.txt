@@ -36,7 +36,7 @@ find_package(GTest REQUIRED)
 include(GoogleTest)
 
 # Automatically collect all test files from the test/ folder matching *Test.cpp
-file(GLOB TEST_FILES "${CMAKE_SOURCE_DIR}/test/*Test.cpp")
+file(GLOB_RECURSE TEST_FILES "${CMAKE_SOURCE_DIR}/test/*Test.cpp")
 
 # Loop through each test file and create an executable target
 foreach(test_src IN LISTS TEST_FILES)
