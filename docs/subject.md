@@ -78,9 +78,6 @@ You are not coding in C anymore. Time to C++! Therefore:
     too:*printf(),*alloc()andfree(). If you use them, your grade will be 0 and
     that’s it.
 
-
-C++ - Module 04 Subtype Polymorphism, Abstract Classes, and Interfaces
-
 - Note that unless explicitly stated otherwise, theusing namespace <ns_name>and
     friendkeywords are forbidden. Otherwise, your grade will be -42.
 - **You are allowed to use the STL only in Modules 08 and 09.** That means:
@@ -261,3 +258,181 @@ Fix the Animal class so that nobody can instantiate it. Everything should work a
 ```
 If you want to, you can update the class name by adding an A prefix to Animal.
 ```
+# Chapter VI
+
+# Exercise 03: Interface & recap
+
+```
+Exercise : 03
+```
+```
+Interface & recap
+Turn-in directory : ex 03 /
+Files to turn in :Makefile, main.cpp, *.cpp, *.{h, hpp}
+Forbidden functions :None
+```
+Interfaces don’t exist in C++98 (not even in C++20). However, pure abstract classes
+are commonly called interfaces. Thus, in this last exercise, let’s try to implement inter-
+faces in order to make sure you understand this module.
+
+Complete the definition of the following **AMateria** class and implement the necessary
+member functions.
+
+```
+class AMateria
+{
+protected:
+[...]
+```
+```
+public:
+AMateria(std::string const & type);
+[...]
+```
+```
+std::string const & getType() const; //Returns the materia type
+```
+```
+virtual AMateria* clone() const = 0;
+virtual void use(ICharacter& target);
+};
+```
+
+Implement the concrete classes for Materias: **Ice** and **Cure**. Use their names in low-
+ercase ("ice" for Ice, "cure" for Cure) to set their types. Of course, their member function
+clone()will return a new instance of the same type (i.e., if you clone an Ice Materia,
+you will get a new Ice Materia).
+
+```
+Theuse(ICharacter&)member function will display:
+```
+- Ice: "* shoots an ice bolt at <name> *"
+- Cure: "* heals <name>’s wounds *"
+
+<name>is the name of the Character passed as a parameter. Don’t print the angle
+brackets (< and >).
+
+```
+While assigning a Materia to another, copying the type doesn’t make
+sense.
+```
+```
+Write the concrete class Character which will implement the following interface:
+```
+```
+class ICharacter
+{
+public:
+virtual ~ICharacter() {}
+virtual std::string const & getName() const = 0;
+virtual void equip(AMateria* m) = 0;
+virtual void unequip(int idx) = 0;
+virtual void use(int idx, ICharacter& target) = 0;
+};
+```
+The **Character** possesses an inventory of 4 slots, which means at most 4 Materias.
+The inventory is empty upon construction. They equip the Materias in the first empty
+slot they find, in the following order: from slot 0 to slot 3. If they try to add a Materia to
+a full inventory, or use/unequip a non-existent Materia, nothing should happen (but bugs
+are still forbidden). Theunequip()member function must NOT delete the Materia!
+
+```
+Handle the Materias your character leaves on the floor as you like.
+Save the addresses before calling unequip(), or anything else, but
+don’t forget that you have to avoid memory leaks.
+```
+Theuse(int, ICharacter&)member function will have to use the Materia at the
+slot[idx], and pass the target parameter to theAMateria::usefunction.
+
+```
+Your character’s inventory will be able to support any type of
+AMateria.
+```
+Your **Character** must have a constructor taking its name as a parameter. Any copy
+(using copy constructor or copy assignment operator) of a Character must be **deep**.
+During copy, the Materias of a Character must be deleted before the new ones are added
+to their inventory. Of course, the Materias must be deleted when a Character is destroyed.
+
+```
+Write the concrete class MateriaSource which will implement the following interface:
+```
+```
+class IMateriaSource
+{
+public:
+virtual ~IMateriaSource() {}
+virtual void learnMateria(AMateria*) = 0;
+virtual AMateria* createMateria(std::string const & type) = 0;
+};
+```
+- learnMateria(AMateria*)
+    Copies the Materia passed as a parameter and stores it in memory so it can be cloned
+    later. Like the Character, the **MateriaSource** can know at most 4 Materias. They
+    are not necessarily unique.
+- createMateria(std::string const &)
+    Returns a new Materia. The latter is a copy of the Materia previously learned by
+    the **MateriaSource** whose type equals the one passed as parameter. Returns 0 if
+    the type is unknown.
+
+In a nutshell, your **MateriaSource** must be able to learn "templates" of Materias to
+create them when needed. Then, you will be able to generate a new Materia using just
+a string that identifies its type.
+
+```
+Running this code:
+```
+```
+int main()
+{
+    IMateriaSource* src = new MateriaSource();
+    src->learnMateria( new Ice());
+    src->learnMateria( new Cure());
+
+    ICharacter* me = new Character("me");
+
+    AMateria* tmp;
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("cure");
+    me->equip(tmp);
+
+    ICharacter* bob = new Character("bob");
+
+    me->use(0, *bob);
+    me->use(1, *bob);
+
+    delete bob;
+    delete me;
+    delete src;
+
+    return 0;
+}
+```
+```
+Should output:
+```
+```
+$> clang++ -W -Wall -Werror *.cpp
+$> ./a.out | cat -e
+* shoots an ice bolt at bob *$
+* heals bob's wounds *$
+```
+```
+As usual, implement and turn in more tests than the ones given above.
+```
+```
+You can pass this module without doing exercise 03.
+```
+
+# Chapter VII
+
+# Submission and Peer Evaluation
+
+Submit your assignment in your Gitrepository as usual. Only the work inside your
+repository will be evaluated during the defense. Don’t hesitate to double-check the names
+of your folders and files to ensure they are correct.
+
+```
+???????????? XXXXXXXXXX = $3$$6b616b91536363971573e58914295d
+```
+
