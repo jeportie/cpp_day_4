@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Polymorphism and Deep Copying in C++</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 5px;
+        }
+        .code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .answer {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e6f7e6;
+            border-left: 4px solid #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .note {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz: Polymorphism and Deep Copying in C++</h1>
+
+    <h2>Polymorphism</h2>
+
+    <div class="question">
+        <p>1. What is polymorphism in Object-Oriented Programming?</p>
+        <div class="options">
+            <div class="option"><input type="radio" name="q1" id="q1a"> <label for="q1a">The ability to hide implementation details</label></div>
+            <div class="option"><input type="radio" name="q1" id="q1b"> <label for="q1b">The ability to inherit from multiple base classes</label></div>
+            <div class="option"><input type="radio" name="q1" id="q1c"> <label for="q1c">The ability to treat objects of different classes as objects of a common base class</label></div>
+            <div class="option"><input type="radio" name="q1" id="q1d"> <label for="q1d">The ability to overload operators</label></div>
+        </div>
+        <button onclick="showAnswer('answer1')">Show Answer</button>
+        <div id="answer1" class="answer">
+            <p><strong>Correct Answer: C</strong></p>
+            <p>Polymorphism is the ability to treat objects of different classes as objects of a common base class. This allows for code that can work with objects of different types through a common interface.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <p>2. Which keyword is used to enable runtime polymorphism in C++?</p>
+        <div class="options">
+            <div class="option"><input type="radio" name="q2" id="q2a"> <label for="q2a">override</label></div>
+            <div class="option"><input type="radio" name="q2" id="q2b"> <label for="q2b">virtual</label></div>
+            <div class="option"><input type="radio" name="q2" id="q2c"> <label for="q2c">polymorphic</label></div>
+            <div class="option"><input type="radio" name="q2" id="q2d"> <label for="q2d">dynamic</label></div>
+        </div>
+        <button onclick="showAnswer('answer2')">Show Answer</button>
+        <div id="answer2" class="answer">
+            <p><strong>Correct Answer: B</strong></p>
+            <p>The <code>virtual</code> keyword is used to enable runtime polymorphism in C++. It tells the compiler that a method can be overridden in derived classes and should be resolved at runtime.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <p>3. Consider the following code:</p>
+        <pre class="code">class Animal {
+public:
+    virtual void makeSound() { std::cout << "Animal sound"; }
+};
+
+class Dog : public Animal {
+public:
+    void makeSound() { std::cout << "Woof"; }
+};
+
+Animal* animal = new Dog();
+animal->makeSound();</pre>
+        <p>What will be printed?</p>
+        <div class="options">
+            <div class="option"><input type="radio" name="q3" id="q3a"> <label for="q3a">"Animal sound"</label></div>
+            <div class="option"><input type="radio" name="q3" id="q3b"> <label for="q3b">"Woof"</label></div>
+            <div class="option"><input type="radio" name="q3" id="q3c"> <label for="q3c">Nothing, this code has an error</label></div>
+            <div class="option"><input type="radio" name="q3" id="q3d"> <label for="q3d">Both "Animal sound" and "Woof"</label></div>
+        </div>
+        <button onclick="showAnswer('answer3')">Show Answer</button>
+        <div id="answer3" class="answer">
+            <p><strong>Correct Answer: B</strong></p>
+            <p>"Woof" will be printed. This is because <code>makeSound()</code> is declared as virtual in the base class, so when it's called through a base class pointer that points to a derived class object, the derived class's version of the method is called.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <p>4. What happens if you forget to declare a destructor as virtual in a base class?</p>
+        <div class="options">
+            <div class="option"><input type="radio" name="q4" id="q4a"> <label for="q4a">Compilation error</label></div>
+            <div class="option"><input type="radio" name="q4" id="q4b"> <label for="q4b">Runtime error</label></div>
+            <div class="option"><input type="radio" name="q4" id="q4c"> <label for="q4c">Potential memory leaks when deleting derived objects through base class pointers</label></div>
+            <div class="option"><input type="radio" name="q4" id="q4d"> <label for="q4d">Nothing, it's optional</label></div>
+        </div>
+        <button onclick="showAnswer('answer4')">Show Answer</button>
+        <div id="answer4" class="answer">
+            <p><strong>Correct Answer: C</strong></p>
+            <p>If a destructor is not declared as virtual in a base class, then when a derived object is deleted through a base class pointer, only the base class destructor will be called, not the derived class destructor. This can lead to memory leaks if the derived class allocated resources that need to be freed in its destructor.</p>
+        </div>
+    </div>
+
+    <h2>Deep Copying</h2>
+
+    <div class="question">
+        <p>5. What is a deep copy?</p>
+        <div class="options">
+            <div class="option"><input type="radio" name="q5" id="q5a"> <label for="q5a">A copy that duplicates only the pointer addresses</label></div>
+            <div class="option"><input type="radio" name="q5" id="q5b"> <label for="q5b">A copy that duplicates both the object and any dynamically allocated memory it points to</label></div>
+            <div class="option"><input type="radio" name="q5" id="q5c"> <label for="q5c">A copy that is created at compile time</label></div>
+            <div class="option"><input type="radio" name="q5" id="q5d"> <label for="q5d">A copy that is stored in the heap memory</label></div>
+        </div>
+        <button onclick="showAnswer('answer5')">Show Answer</button>
+        <div id="answer5" class="answer">
+            <p><strong>Correct Answer: B</strong></p>
+            <p>A deep copy duplicates both the object itself and any dynamically allocated memory it points to. This ensures that the copy is completely independent of the original.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <p>6. When is a deep copy necessary?</p>
+        <div class="options">
+            <div class="option"><input type="radio" name="q6" id="q6a"> <label for="q6a">When a class has only primitive data types</label></div>
+            <div class="option"><input type="radio" name="q6" id="q6b"> <label for="q6b">When using static memory allocation</label></div>
+            <div class="option"><input type="radio" name="q6" id="q6c"> <label for="q6c">When a class contains pointers to dynamically allocated memory</label></div>
+            <div class="option"><input type="radio" name="q6" id="q6d"> <label for="q6d">When using the default copy constructor</label></div>
+        </div>
+        <button onclick="showAnswer('answer6')">Show Answer</button>
+        <div id="answer6" class="answer">
+            <p><strong>Correct Answer: C</strong></p>
+            <p>A deep copy is necessary when a class contains pointers to dynamically allocated memory. Without a deep copy, multiple objects would share the same memory, leading to problems when one object modifies or deletes that memory.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <p>7. Complete the following code to implement a deep copy constructor:</p>
+        <pre class="code">class MyClass {
+private:
+    int* data;
+    int size;
+public:
+    MyClass(const MyClass& other) {
+        // Your code here
+    }
+};</pre>
+        <button onclick="showAnswer('answer7')">Show Answer</button>
+        <div id="answer7" class="answer">
+            <p><strong>Correct Implementation:</strong></p>
+            <pre class="code">MyClass(const MyClass& other) {
+    size = other.size;
+    data = new int[size];
+    for (int i = 0; i < size; i++) {
+        data[i] = other.data[i];
+    }
+}</pre>
+            <p>This implementation creates a new array of the same size as the original, then copies each element individually. This ensures that the new object has its own independent copy of the data.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <p>8. What happens if you use the default copy constructor for a class with dynamically allocated memory?</p>
+        <div class="options">
+            <div class="option"><input type="radio" name="q8" id="q8a"> <label for="q8a">The compiler will generate an error</label></div>
+            <div class="option"><input type="radio" name="q8" id="q8b"> <label for="q8b">A shallow copy will be created, potentially leading to memory issues</label></div>
+            <div class="option"><input type="radio" name="q8" id="q8c"> <label for="q8c">A deep copy will be automatically created</label></div>
+            <div class="option"><input type="radio" name="q8" id="q8d"> <label for="q8d">The copy will be incomplete</label></div>
+        </div>
+        <button onclick="showAnswer('answer8')">Show Answer</button>
+        <div id="answer8" class="answer">
+            <p><strong>Correct Answer: B</strong></p>
+            <p>The default copy constructor creates a shallow copy, which means it copies the pointer values but not the memory they point to. This can lead to multiple objects sharing the same memory, causing problems when one object modifies or deletes that memory.</p>
+        </div>
+    </div>
+
+    <h2>Memory Management</h2>
+
+    <div class="question">
+        <p>9. In the context of this exercise, why is it important to delete the Brain object in the Dog and Cat destructors?</p>
+        <div class="options">
+            <div class="option"><input type="radio" name="q9" id="q9a"> <label for="q9a">To save memory for other applications</label></div>
+            <div class="option"><input type="radio" name="q9" id="q9b"> <label for="q9b">To prevent memory leaks</label></div>
+            <div class="option"><input type="radio" name="q9" id="q9c"> <label for="q9c">To improve performance</label></div>
+            <div class="option"><input type="radio" name="q9" id="q9d"> <label for="q9d">It's not important, the memory will be freed automatically</label></div>
+        </div>
+        <button onclick="showAnswer('answer9')">Show Answer</button>
+        <div id="answer9" class="answer">
+            <p><strong>Correct Answer: B</strong></p>
+            <p>It's important to delete the Brain object in the Dog and Cat destructors to prevent memory leaks. In C++, dynamically allocated memory (using <code>new</code>) must be explicitly freed (using <code>delete</code>). If the Brain object is not deleted, its memory will remain allocated even after the Dog or Cat object is destroyed.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <p>10. What is the correct order of destructor calls when deleting a Dog object through an Animal pointer?</p>
+        <div class="options">
+            <div class="option"><input type="radio" name="q10" id="q10a"> <label for="q10a">Animal destructor, then Dog destructor</label></div>
+            <div class="option"><input type="radio" name="q10" id="q10b"> <label for="q10b">Dog destructor, then Animal destructor</label></div>
+            <div class="option"><input type="radio" name="q10" id="q10c"> <label for="q10c">Brain destructor, then Dog destructor, then Animal destructor</label></div>
+            <div class="option"><input type="radio" name="q10" id="q10d"> <label for="q10d">The order is undefined</label></div>
+        </div>
+        <button onclick="showAnswer('answer10')">Show Answer</button>
+        <div id="answer10" class="answer">
+            <p><strong>Correct Answer: B</strong></p>
+            <p>When a derived object is deleted, the destructors are called in the reverse order of the inheritance hierarchy. First, the derived class destructor (Dog) is called, which will delete the Brain object. Then, the base class destructor (Animal) is called.</p>
+        </div>
+    </div>
+
+    <h2>Practical Application</h2>
+
+    <div class="question">
+        <p>11. Consider the following code:</p>
+        <pre class="code">Dog originalDog;
+originalDog.pushIdea("I love bones");
+
+Dog copyDog = originalDog;
+copyDog.pushIdea("I want to sleep");</pre>
+        <p>If deep copying is implemented correctly, what will be the result?</p>
+        <div class="options">
+            <div class="option"><input type="radio" name="q11" id="q11a"> <label for="q11a">Both dogs will have both ideas</label></div>
+            <div class="option"><input type="radio" name="q11" id="q11b"> <label for="q11b">originalDog will have only "I love bones" and copyDog will have both ideas</label></div>
+            <div class="option"><input type="radio" name="q11" id="q11c"> <label for="q11c">Both dogs will have only their own idea</label></div>
+            <div class="option"><input type="radio" name="q11" id="q11d"> <label for="q11d">This code will cause a memory leak</label></div>
+        </div>
+        <button onclick="showAnswer('answer11')">Show Answer</button>
+        <div id="answer11" class="answer">
+            <p><strong>Correct Answer: B</strong></p>
+            <p>If deep copying is implemented correctly, <code>copyDog</code> will initially have a copy of all the ideas from <code>originalDog</code>. When a new idea is added to <code>copyDog</code>, it will only affect <code>copyDog</code>'s Brain, not <code>originalDog</code>'s. So <code>originalDog</code> will have only "I love bones" and <code>copyDog</code> will have both "I love bones" and "I want to sleep".</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <p>12. Why is polymorphism useful in the context of this exercise?</p>
+        <div class="options">
+            <div class="option"><input type="radio" name="q12" id="q12a"> <label for="q12a">It allows us to avoid using inheritance</label></div>
+            <div class="option"><input type="radio" name="q12" id="q12b"> <label for="q12b">It improves memory efficiency</label></div>
+            <div class="option"><input type="radio" name="q12" id="q12c"> <label for="q12c">It allows us to treat Dogs and Cats as Animals while preserving their specific behaviors</label></div>
+            <div class="option"><input type="radio" name="q12" id="q12d"> <label for="q12d">It simplifies the syntax of the code</label></div>
+        </div>
+        <button onclick="showAnswer('answer12')">Show Answer</button>
+        <div id="answer12" class="answer">
+            <p><strong>Correct Answer: C</strong></p>
+            <p>Polymorphism is useful in this exercise because it allows us to treat Dogs and Cats as Animals while preserving their specific behaviors. We can store them in an array of Animal pointers and call <code>makeSound()</code> on each one, and the correct sound will be made depending on whether the Animal is a Dog or a Cat.</p>
+        </div>
+    </div>
+
+    <div class="note">
+        <h3>Note:</h3>
+        <p>This quiz covers the key concepts of polymorphism and deep copying in C++ as demonstrated in Exercise 01. Understanding these concepts is crucial for writing robust object-oriented code in C++. Polymorphism allows for flexible and extensible code, while proper deep copying ensures that objects maintain their independence and prevent memory issues.</p>
+        <p>In the context of the Animal, Dog, Cat, and Brain classes, these concepts allow us to:</p>
+        <ul>
+            <li>Treat different animal types uniformly through the Animal interface</li>
+            <li>Ensure that each animal has its own independent brain with its own ideas</li>
+            <li>Properly manage memory to prevent leaks</li>
+        </ul>
+        <p>These principles extend beyond this exercise and are fundamental to good C++ programming practices.</p>
+    </div>
+
+    <script>
+        function showAnswer(id) {
+            var answer = document.getElementById(id);
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+            } else {
+                answer.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
+
