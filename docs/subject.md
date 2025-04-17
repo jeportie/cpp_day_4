@@ -239,3 +239,25 @@ return 0;
 ```
 Implement and turn in more tests than the ones given above.
 ```
+# Chapter V
+
+# Exercise 02: Abstract class
+
+```
+Exercise : 02
+```
+```
+Abstract class
+Turn-in directory : ex 02 /
+Files to turn in :Files from previous exercise + *.cpp, *.{h, hpp}
+Forbidden functions :None
+```
+```
+Creating Animal objects doesn’t make sense after all. It’s true, they make no sound!
+```
+To avoid any possible mistakes, the default Animal class should not be instantiable.
+Fix the Animal class so that nobody can instantiate it. Everything should work as before.
+
+```
+If you want to, you can update the class name by adding an A prefix to Animal.
+```
