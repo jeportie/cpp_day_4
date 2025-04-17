@@ -53,9 +53,3 @@ std::ostream & operator<<(std::ostream & out, const Animal& in)
 std::string Animal::getType(void) const { return (_type); }
 
 void Animal::setType(std::string type) { _type = type; }
-
-void Animal::makeSound(void) const
-{
-	std::cout << _type << ": ** Unknown Sound ** ..." << std::endl;
-	return;
-}

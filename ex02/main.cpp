@@ -20,7 +20,8 @@ void testBasicPolymorphism()
 {
     std::cout << "\n===== BASIC POLYMORPHISM TEST =====\n" << std::endl;
     
-    const Animal* meta = new Animal();
+    // Cannot instantiate Animal directly anymore as it's an abstract class
+    // const Animal* meta = new Animal(); // This would cause a compilation error
     const Animal* j = new Dog();
     const Animal* i = new Cat();
 
@@ -32,11 +33,10 @@ void testBasicPolymorphism()
     i->makeSound(); // will output the cat sound!
     std::cout << "j (Dog) sound: ";
     j->makeSound();
-    std::cout << "meta (Animal) sound: ";
-    meta->makeSound();
+    // meta->makeSound(); // Cannot call this anymore
 
     std::cout << "\nCleaning up..." << std::endl;
-    delete meta;
+    // delete meta; // Cannot delete what wasn't created
     delete j;
     delete i;
 }
@@ -164,6 +164,8 @@ void testMemoryLeaks()
     std::cout << "4. Cat destructor" << std::endl;
     std::cout << "5. Brain destructor (for Cat's brain)" << std::endl;
     std::cout << "6. Animal destructor (for Cat)" << std::endl;
+    
+    std::cout << "\nNote: We can no longer instantiate Animal directly as it's now an abstract class" << std::endl;
 }
 
 int main()

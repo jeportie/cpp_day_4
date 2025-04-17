@@ -12,35 +12,43 @@
 
 #include <gtest/gtest.h>
 #include "../../src/class/Animal.hpp"
+#include "../../src/class/Dog.hpp"
+#include "../../src/class/Cat.hpp"
 
-// Test the default constructor of Animal
-TEST(AnimalTest, DefaultConstructor)
+// Since Animal is now an abstract class, we can't test it directly
+// Instead, we'll test its derived classes
+
+// Test that we can use Animal pointers for polymorphism
+TEST(AnimalTest, Polymorphism)
 {
-    Animal animal;
-    EXPECT_EQ(animal.getType(), "Animal");
+    const Animal* dog = new Dog();
+    const Animal* cat = new Cat();
+    
+    EXPECT_EQ(dog->getType(), "Dog");
+    EXPECT_EQ(cat->getType(), "Cat");
+    
+    // Clean up
+    delete dog;
+    delete cat;
 }
 
-// Test the parametric constructor of Animal
-TEST(AnimalTest, ParametricConstructor)
+// Test that makeSound works through the Animal interface
+TEST(AnimalTest, MakeSoundPolymorphism)
 {
-    Animal animal("Dog");
-    EXPECT_EQ(animal.getType(), "Dog");
-}
-
-// Test the copy constructor of Animal
-TEST(AnimalTest, CopyConstructor)
-{
-    Animal original;
-    Animal copy(original);
-    EXPECT_EQ(copy.getType(), "Animal");
-}
-
-// Test the makeSound method of Animal
-TEST(AnimalTest, MakeSound)
-{
-    Animal animal;
+    const Animal* dog = new Dog();
+    const Animal* cat = new Cat();
+    
     testing::internal::CaptureStdout();
-    animal.makeSound();
-    std::string output = testing::internal::GetCapturedStdout();
-    EXPECT_EQ(output, "Animal: ** Unknown Sound ** ...\n");
+    dog->makeSound();
+    std::string dogOutput = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(dogOutput, "Dog: Ouaf! Ouaf!...\n");
+    
+    testing::internal::CaptureStdout();
+    cat->makeSound();
+    std::string catOutput = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(catOutput, "Cat: Meeeeoooowww...\n");
+    
+    // Clean up
+    delete dog;
+    delete cat;
 }

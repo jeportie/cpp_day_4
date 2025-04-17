@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract Classes in C++ Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        h1, h2 {
+            color: #2c3e50;
+        }
+        
+        .quiz-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .question {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .options {
+            margin-left: 20px;
+        }
+        
+        .code-block {
+            background-color: #f8f8f8;
+            border-left: 4px solid #4CAF50;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .correct {
+            color: #4CAF50;
+        }
+        
+        .incorrect {
+            color: #f44336;
+        }
+        
+        .explanation {
+            background-color: #e7f3fe;
+            border-left: 4px solid #2196F3;
+            padding: 10px;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Abstract Classes in C++ Quiz</h1>
+    
+    <div class="quiz-container">
+        <div class="question" id="q1">
+            <h3>Question 1: What makes a class abstract in C++?</h3>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a"> A) Using the 'abstract' keyword before the class declaration</label><br>
+                <label><input type="radio" name="q1" value="b"> B) Having at least one pure virtual function</label><br>
+                <label><input type="radio" name="q1" value="c"> C) Making all member functions virtual</label><br>
+                <label><input type="radio" name="q1" value="d"> D) Using the 'interface' keyword</label>
+            </div>
+            <div class="explanation" id="exp1">
+                <strong>Explanation:</strong> In C++, a class becomes abstract when it has at least one pure virtual function (declared with = 0). There is no 'abstract' or 'interface' keyword in C++.
+            </div>
+        </div>
+        
+        <div class="question" id="q2">
+            <h3>Question 2: Which of the following correctly declares a pure virtual function?</h3>
+            <div class="options">
+                <label><input type="radio" name="q2" value="a"> A) abstract void makeSound();</label><br>
+                <label><input type="radio" name="q2" value="b"> B) virtual void makeSound() abstract;</label><br>
+                <label><input type="radio" name="q2" value="c"> C) virtual void makeSound() = 0;</label><br>
+                <label><input type="radio" name="q2" value="d"> D) void makeSound() override = NULL;</label>
+            </div>
+            <div class="explanation" id="exp2">
+                <strong>Explanation:</strong> The correct syntax for declaring a pure virtual function in C++ is using the '= 0' notation after the function declaration.
+            </div>
+        </div>
+        
+        <div class="question" id="q3">
+            <h3>Question 3: What happens if you try to instantiate an abstract class?</h3>
+            <div class="options">
+                <label><input type="radio" name="q3" value="a"> A) Runtime error</label><br>
+                <label><input type="radio" name="q3" value="b"> B) Compilation error</label><br>
+                <label><input type="radio" name="q3" value="c"> C) Warning but the program will run</label><br>
+                <label><input type="radio" name="q3" value="d"> D) Nothing, it's perfectly valid</label>
+            </div>
+            <div class="explanation" id="exp3">
+                <strong>Explanation:</strong> Trying to instantiate an abstract class directly will result in a compilation error. Abstract classes are meant to be base classes that cannot be instantiated directly.
+            </div>
+        </div>
+        
+        <div class="question" id="q4">
+            <h3>Question 4: Complete the code to make the Animal class abstract:</h3>
+            <div class="code-block">
+                class Animal {<br>
+                public:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Animal();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;virtual ~Animal();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;virtual void makeSound() const <input type="text" id="q4-input" style="width: 50px;">;<br>
+                };<br>
+            </div>
+            <div class="explanation" id="exp4">
+                <strong>Explanation:</strong> To make a function pure virtual and thus make the class abstract, you add '= 0' after the function declaration.
+            </div>
+        </div>
+        
+        <div class="question" id="q5">
+            <h3>Question 5: Which of the following is true about abstract classes in C++?</h3>
+            <div class="options">
+                <label><input type="radio" name="q5" value="a"> A) Abstract classes cannot have constructors</label><br>
+                <label><input type="radio" name="q5" value="b"> B) Abstract classes cannot have data members</label><br>
+                <label><input type="radio" name="q5" value="c"> C) Abstract classes cannot have implemented methods</label><br>
+                <label><input type="radio" name="q5" value="d"> D) Abstract classes can have all of the above</label>
+            </div>
+            <div class="explanation" id="exp5">
+                <strong>Explanation:</strong> Abstract classes in C++ can have constructors, data members, and implemented methods. The only restriction is that they cannot be instantiated directly due to having at least one pure virtual function.
+            </div>
+        </div>
+        
+        <div class="question" id="q6">
+            <h3>Question 6: What is the main purpose of an abstract class?</h3>
+            <div class="options">
+                <label><input type="radio" name="q6" value="a"> A) To save memory</label><br>
+                <label><input type="radio" name="q6" value="b"> B) To define a common interface for derived classes</label><br>
+                <label><input type="radio" name="q6" value="c"> C) To make code compilation faster</label><br>
+                <label><input type="radio" name="q6" value="d"> D) To prevent inheritance</label>
+            </div>
+            <div class="explanation" id="exp6">
+                <strong>Explanation:</strong> The main purpose of an abstract class is to define a common interface that derived classes must implement. It provides a way to achieve polymorphism.
+            </div>
+        </div>
+        
+        <div class="question" id="q7">
+            <h3>Question 7: In our Animal example, why did we make the makeSound() method pure virtual?</h3>
+            <div class="options">
+                <label><input type="radio" name="q7" value="a"> A) To improve performance</label><br>
+                <label><input type="radio" name="q7" value="b"> B) Because all animals make different sounds</label><br>
+                <label><input type="radio" name="q7" value="c"> C) Because creating a generic Animal object doesn't make sense</label><br>
+                <label><input type="radio" name="q7" value="d"> D) To reduce memory usage</label>
+            </div>
+            <div class="explanation" id="exp7">
+                <strong>Explanation:</strong> We made the makeSound() method pure virtual because creating a generic Animal object doesn't make sense in our context. A generic "Animal" doesn't have a specific sound, only specific animals like dogs or cats do.
+            </div>
+        </div>
+        
+        <h2>Comparison: Abstract Classes vs Concrete Classes</h2>
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>Abstract Class</th>
+                <th>Concrete Class</th>
+            </tr>
+            <tr>
+                <td>Instantiation</td>
+                <td>Cannot be instantiated directly</td>
+                <td>Can be instantiated</td>
+            </tr>
+            <tr>
+                <td>Pure Virtual Functions</td>
+                <td>Has at least one</td>
+                <td>None (all functions are implemented)</td>
+            </tr>
+            <tr>
+                <td>Purpose</td>
+                <td>Define interface for derived classes</td>
+                <td>Provide complete implementation</td>
+            </tr>
+            <tr>
+                <td>Constructors</td>
+                <td>Can have (called by derived classes)</td>
+                <td>Can have</td>
+            </tr>
+            <tr>
+                <td>Data Members</td>
+                <td>Can have</td>
+                <td>Can have</td>
+            </tr>
+        </table>
+        
+        <button id="check-answers">Check Answers</button>
+        <div class="result" id="result"></div>
+    </div>
+    
+    <script>
+        document.getElementById('check-answers').addEventListener('click', function() {
+            let score = 0;
+            const total = 7;
+            
+            // Check Question 1
+            const q1Answer = document.querySelector('input[name="q1"]:checked');
+            if (q1Answer && q1Answer.value === 'b') {
+                score++;
+                document.getElementById('q1').classList.add('correct');
+            } else {
+                document.getElementById('q1').classList.add('incorrect');
+            }
+            document.getElementById('exp1').style.display = 'block';
+            
+            // Check Question 2
+            const q2Answer = document.querySelector('input[name="q2"]:checked');
+            if (q2Answer && q2Answer.value === 'c') {
+                score++;
+                document.getElementById('q2').classList.add('correct');
+            } else {
+                document.getElementById('q2').classList.add('incorrect');
+            }
+            document.getElementById('exp2').style.display = 'block';
+            
+            // Check Question 3
+            const q3Answer = document.querySelector('input[name="q3"]:checked');
+            if (q3Answer && q3Answer.value === 'b') {
+                score++;
+                document.getElementById('q3').classList.add('correct');
+            } else {
+                document.getElementById('q3').classList.add('incorrect');
+            }
+            document.getElementById('exp3').style.display = 'block';
+            
+            // Check Question 4
+            const q4Answer = document.getElementById('q4-input').value.trim();
+            if (q4Answer === '= 0') {
+                score++;
+                document.getElementById('q4').classList.add('correct');
+            } else {
+                document.getElementById('q4').classList.add('incorrect');
+            }
+            document.getElementById('exp4').style.display = 'block';
+            
+            // Check Question 5
+            const q5Answer = document.querySelector('input[name="q5"]:checked');
+            if (q5Answer && q5Answer.value === 'd') {
+                score++;
+                document.getElementById('q5').classList.add('correct');
+            } else {
+                document.getElementById('q5').classList.add('incorrect');
+            }
+            document.getElementById('exp5').style.display = 'block';
+            
+            // Check Question 6
+            const q6Answer = document.querySelector('input[name="q6"]:checked');
+            if (q6Answer && q6Answer.value === 'b') {
+                score++;
+                document.getElementById('q6').classList.add('correct');
+            } else {
+                document.getElementById('q6').classList.add('incorrect');
+            }
+            document.getElementById('exp6').style.display = 'block';
+            
+            // Check Question 7
+            const q7Answer = document.querySelector('input[name="q7"]:checked');
+            if (q7Answer && q7Answer.value === 'c') {
+                score++;
+                document.getElementById('q7').classList.add('correct');
+            } else {
+                document.getElementById('q7').classList.add('incorrect');
+            }
+            document.getElementById('exp7').style.display = 'block';
+            
+            // Display result
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = `Your score: ${score}/${total}`;
+            resultElement.style.display = 'block';
+            
+            if (score === total) {
+                resultElement.classList.add('correct');
+                resultElement.textContent += ' - Perfect!';
+            } else if (score >= total * 0.7) {
+                resultElement.classList.add('correct');
+                resultElement.textContent += ' - Good job!';
+            } else {
+                resultElement.classList.add('incorrect');
+                resultElement.textContent += ' - Keep studying!';
+            }
+        });
+    </script>
+</body>
+</html>
+
