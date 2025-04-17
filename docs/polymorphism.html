@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz: Polymorphism and Deep Copying in C++</title>
+	<script src="https://cdn.jsdelivr.net/npm/ag-charts-community/dist/ag-charts-community.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -305,5 +306,142 @@ copyDog.pushIdea("I want to sleep");</pre>
         }
     </script>
 </body>
-</html>
+<!-- Polymorphism Diagram Section -->
+<div class="diagram-section">
+    <h2>Visual Guide to Polymorphism</h2>
+    <div class="diagram-container">
+        <img src="polymorphism_diagram.png" alt="Polymorphism Diagram" class="diagram">
+        <p class="diagram-caption">Figure 1: Inheritance hierarchy showing how Dog and Cat inherit from Animal</p>
+    </div>
+    
+    <div class="tab-container">
+        <div class="tab-buttons">
+            <button class="tab-button active" onclick="openTab('static-poly')">Static Polymorphism</button>
+            <button class="tab-button" onclick="openTab('dynamic-poly')">Dynamic Polymorphism</button>
+        </div>
+        <div id="static-poly" class="tab-content active">
+            <h3>Static (Compile-time) Polymorphism</h3>
+            <p>Achieved through function overloading and operator overloading.</p>
+            <div class="code">
+                // Function overloading example
+                void print(int i) {
+                    std::cout << "Integer: " << i << std::endl;
+                }
+                
+                void print(double d) {
+                    std::cout << "Double: " << d << std::endl;
+                }
+                
+                void print(std::string s) {
+                    std::cout << "String: " << s << std::endl;
+                }
+            </div>
+        </div>
+        <div id="dynamic-poly" class="tab-content">
+            <h3>Dynamic (Runtime) Polymorphism</h3>
+            <p>Achieved through inheritance and virtual functions.</p>
+            <div class="code">
+                class Animal {
+                public:
+                    virtual void makeSound() const {
+                        std::cout << "Animal sound" << std::endl;
+                    }
+                };
+                
+                class Dog : public Animal {
+                public:
+                    void makeSound() const override {
+                        std::cout << "Woof!" << std::endl;
+                    }
+                };
+                
+                // Usage
+                Animal* animal = new Dog();
+                animal->makeSound(); // Outputs: "Woof!"
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- Deep vs Shallow Copy Visualization -->
+<div class="diagram-section">
+    <h2>Deep vs Shallow Copy Visualization</h2>
+    <div class="tab-container">
+        <div class="tab-buttons">
+            <button class="tab-button active" onclick="openTab('shallow-copy')">Shallow Copy</button>
+            <button class="tab-button" onclick="openTab('deep-copy')">Deep Copy</button>
+        </div>
+        <div id="shallow-copy" class="tab-content active">
+            <h3>Shallow Copy</h3>
+            <p>Only copies the member variables, not the data they point to.</p>
+            <img src="shallow_copy.png" alt="Shallow Copy Diagram" class="diagram">
+            <div class="code">
+                // Shallow copy example (default copy constructor)
+                class ShallowClass {
+                private:
+                    int* data;
+                public:
+                    ShallowClass(int value) {
+                        data = new int(value);
+                    }
+                    
+                    // Default copy constructor performs shallow copy
+                    // ShallowClass(const ShallowClass& other) = default;
+                    
+                    ~ShallowClass() {
+                        delete data;
+                    }
+                };
+                
+                // Problem:
+                ShallowClass original(5);
+                ShallowClass copy = original; // Both objects now point to the same memory
+                // When one object is destroyed, the other has a dangling pointer!
+            </div>
+        </div>
+        <div id="deep-copy" class="tab-content">
+            <h3>Deep Copy</h3>
+            <p>Copies both the member variables and the data they point to.</p>
+            <div class="code">
+                // Deep copy example
+                class DeepClass {
+                private:
+                    int* data;
+                public:
+                    DeepClass(int value) {
+                        data = new int(value);
+                    }
+                    
+                    // Custom copy constructor performs deep copy
+                    DeepClass(const DeepClass& other) {
+                        data = new int(*other.data); // Create new memory and copy the value
+                    }
+                    
+                    ~DeepClass() {
+                        delete data;
+                    }
+                };
+                
+                // Safe usage:
+                DeepClass original(5);
+                DeepClass copy = original; // Each object has its own independent memory
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Memory Chart Section (for ag-Charts) -->
+<div class="chart-section">
+    <h2>Memory Usage Comparison</h2>
+    <div id="memoryChart" class="chart-container"></div>
+</div>
+
+<!-- Quiz Progress Tracking -->
+<div class="progress-section">
+    <h2>Your Progress</h2>
+    <div class="progress-container">
+        <div id="progressBar" class="progress-bar"></div>
+    </div>
+    <div id="scoreDisplay" class="score-display">Score: 0/12</div>
+</div>
+</html>
