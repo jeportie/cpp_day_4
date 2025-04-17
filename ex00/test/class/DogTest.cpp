@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <gtest/gtest.h>
-#include "../src/class/Dog.hpp"
+#include "../../src/class/Dog.hpp"
 
 // Test the default constructor of Dog
 TEST(DogTest, DefaultConstructor)

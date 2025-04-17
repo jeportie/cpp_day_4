@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <gtest/gtest.h>
-#include "../src/class/Cat.hpp"
+#include "../../src/class/Cat.hpp"
 
 // Test the default constructor of Cat
 TEST(CatTest, DefaultConstructor)

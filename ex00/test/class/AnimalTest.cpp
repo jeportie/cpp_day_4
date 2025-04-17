@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <gtest/gtest.h>
-#include "../src/class/Animal.hpp"
+#include "../../src/class/Animal.hpp"
 
 // Test the default constructor of Animal
 TEST(AnimalTest, DefaultConstructor)
