@@ -22,7 +22,7 @@
 Cat::Cat(void) : Animal()
 {
 	std::cout << "[Cat] - default constructor called - " << std::endl;
-	this->setType("Cat");
+	this->_type = "Cat";
 	this->_brain = new Brain();
 }
 
