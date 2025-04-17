@@ -19,7 +19,7 @@ TEST(BrainTest, DefaultConstructor)
     Brain brain;
 	
 	brain.pushIdea("This is a Test");
-    EXPECT_EQ(brain.getIdea(0), "This is a Test");
+    EXPECT_EQ(brain.getIdea(0), "This iss a Test");
 }
 
 // Test the copy constructor of Brain
