@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 12:56:22 by jeportie          #+#    #+#             */
-/*   Updated: 2025/04/16 12:57:22 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/04/17 08:42:56 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,15 @@ Brain& Brain::operator=(const Brain& rhs)
 	}
 	return (*this);
 }
+
+void Brain::pushIdea(std::string const idea)
+{
+	int	i = 0;
+
+	while (!this->_ideas[i].empty())
+		i++;
+	_ideas[i] = idea;
+	return ;
+}
+
+std::string Brain::getIdea(int i) {	return (_ideas[i]); }
