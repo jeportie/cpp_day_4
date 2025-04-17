@@ -1,6 +1,6 @@
 # Lesson on Abstract Classes in C++
 
-Now that we've made the necessary changes to make the Animal class abstract, let's understand what abstract classes are and why they're useful.
+Let's understand what abstract classes are and why they're useful.
 
 ### What is an Abstract Class?
 
@@ -43,4 +43,3 @@ In C++, there's no explicit "interface" keyword like in some other languages. In
 3. Constructors and destructors
 
 This makes them more flexible than pure interfaces in languages like Java or C#.
-
