@@ -102,7 +102,7 @@ void testDeepCopy()
     delete copyDog;
 }
 
-// Function to demonstrate array of animals as required by the subject
+// Function to demonstrate array of animals
 void testAnimalArray()
 {
     std::cout << "\n===== ANIMAL ARRAY TEST =====\n" << std::endl;

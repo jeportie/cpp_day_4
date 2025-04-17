@@ -27,7 +27,7 @@ Dog::Dog(void) : Animal()
 Dog::Dog(const Dog& src) : Animal()
 {
 	std::cout << "[Dog] - copy constructor called - " << std::endl;
-	this->_brain = new Brain(*src._brain);
+	this->_brain = NULL;
 	*this = src;
 	return;
 }
