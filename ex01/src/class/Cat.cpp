@@ -59,3 +59,11 @@ void Cat::makeSound(void) const
 	std::cout << _type << ": Meeeeoooowww..." << std::endl;
 	return;
 }
+
+void Cat::pushIdea(std::string const idea)
+{
+	this->_brain->pushIdea(idea);
+	return ;
+}
+
+std::string Cat::getIdea(int i) { return (this->_brain->getIdea(i)); }

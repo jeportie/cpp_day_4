@@ -23,9 +23,11 @@ public:
 	Dog(const Dog& src);
 	virtual ~Dog(void);
 
-	Dog& operator=(const Dog& rhs);
+	Dog&		 operator=(const Dog& rhs);
 
 	virtual void makeSound(void) const;
+	void		 pushIdea(std::string const idea);
+	std::string	 getIdea(int i);
 
 private:
 

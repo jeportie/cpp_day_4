@@ -58,4 +58,10 @@ void Dog::makeSound(void) const
 	return;
 }
 
+void Dog::pushIdea(std::string const idea)
+{
+	this->_brain->pushIdea(idea);
+	return ;
+}
 
+std::string Dog::getIdea(int i) { return (this->_brain->getIdea(i)); }

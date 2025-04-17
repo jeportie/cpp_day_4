@@ -23,9 +23,11 @@ public:
 	Cat(const Cat& src);
 	virtual ~Cat(void);
 
-	Cat& operator=(const Cat& rhs);
+	Cat&		 operator=(const Cat& rhs);
 
 	virtual void makeSound(void) const;
+	void	   	 pushIdea(std::string const idea);
+	std::string	 getIdea(int i);
 private:
 
 	Brain* _brain;
