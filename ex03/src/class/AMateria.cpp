@@ -14,6 +14,7 @@
 # include <iostream>
 # include <ostream>
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
 
 AMateria::AMateria(void)
 {
@@ -41,9 +42,12 @@ AMateria & AMateria::operator=(const AMateria& rhs)
 	return (*this);
 }
 
-//std::ostream & operator<<(std::ostream & out, const AMateria& in)
-//{
-	//out << "The value of _foo is : " << in.getFoo();
-	//return (out);
-//}
+const std::string& AMateria::getType() const
+{
+	return _type;
+}
 
+void AMateria::use(ICharacter& target)
+{
+	std::cout << "Using AMateria on " << target.getName() << std::endl;
+}
