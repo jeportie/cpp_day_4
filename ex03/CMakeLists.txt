@@ -51,7 +51,11 @@ foreach(test_src IN LISTS TEST_FILES)
     target_include_directories(${test_name} PRIVATE ${CMAKE_SOURCE_DIR}/src)
     
     # Link the executable with GoogleTest libraries
-    target_link_libraries(${test_name} GTest::GTest GTest::Main)
+    target_link_libraries(${test_name}
+		GTest::GTest 
+		GTest::gmock
+		pthread
+		GTest::Main)
     
     # Automatically discover tests within the built executable
     gtest_discover_tests(${test_name})
