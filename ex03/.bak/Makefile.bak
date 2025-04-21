@@ -23,7 +23,6 @@ ARGS=$(filter-out $@,$(MAKECMDGOALS))
 #### BEGIN AUTO GENERATED FILES ###
 # List of source files:
 SRC = \
-  src/class/Ice.cpp \
   src/class/AMateria.cpp 
 ### END AUTO GENERATED FILES ###
 
