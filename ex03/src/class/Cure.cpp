@@ -6,11 +6,12 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 08:46:45 by jeportie          #+#    #+#             */
-/*   Updated: 2025/04/22 09:12:19 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/04/22 13:05:06 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 #include "Cure.hpp"
 #include <iostream>
 
@@ -51,15 +52,13 @@ Cure& Cure::operator=(const Cure& rhs)
 
 Cure* Cure::clone() const
 {
-	Cure *clone;
-
-	clone = NULL;
+	Cure *clone = new Cure(*this);
 	return (clone);
 }
 
 void Cure::use(ICharacter& target)
 {
-	std::cout << "* heals " << "<name>" << " wounds *" << std::endl; 
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl; 
 	(void)target;
 	return ;
 }

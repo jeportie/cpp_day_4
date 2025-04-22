@@ -6,12 +6,13 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 19:15:39 by jeportie          #+#    #+#             */
-/*   Updated: 2025/04/22 08:58:24 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/04/22 13:05:40 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 #include <iostream>
 #include <string>
 
@@ -54,15 +55,14 @@ Ice& Ice::operator=(const Ice& rhs)
 
 Ice* Ice::clone() const
 {
-	Ice *clone;
+	Ice *clone = new Ice(*this);
 
-	clone = NULL;
 	return (clone);
 }
 
 void Ice::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " << "<name>" << " *" << std::endl; 
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl; 
 	(void)target;
 	return ;
 }
