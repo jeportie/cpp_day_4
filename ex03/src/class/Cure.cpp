@@ -1,68 +1,65 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/21 19:15:39 by jeportie          #+#    #+#             */
-/*   Updated: 2025/04/22 08:58:24 by jeportie         ###   ########.fr       */
+/*   Created: 2025/04/22 08:46:45 by jeportie          #+#    #+#             */
+/*   Updated: 2025/04/22 09:12:19 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
 #include "AMateria.hpp"
+#include "Cure.hpp"
 #include <iostream>
-#include <string>
 
-Ice::Ice(void)
+Cure::Cure(void)
 : AMateria()
 {
-	std::cout << "[Ice] - default constructor called -" << std::endl;
-	this->_type = "ice";
+	std::cout << "[CURE] - default constructor called -" << std::endl;
+	this->_type = "cure";
 }
 
-Ice::Ice(std::string type)
+Cure::Cure(std::string type)
 : AMateria(type)
 {
-	std::cout << "[Ice] - parametric constructor called -" << std::endl;
+	std::cout << "[CURE] - parametric constructor called -" << std::endl;
 	this->_type = type;
 }
 
-
-Ice::Ice(const Ice& src)
+Cure::Cure(const Cure& src)
 : AMateria(src)
 {
-	std::cout << "[Ice] - copy constructor called -" << std::endl;
+	std::cout << "[CURE] - copy constructor called -" << std::endl;
 	*this = src;
 }
 
-Ice::~Ice(void)
+Cure::~Cure(void)
 {
-	std::cout << "[Ice] - destructor called -" << std::endl;
+	std::cout << "[CURE] - destrucor called -" << std::endl;
 	return ;
 }
 
-Ice& Ice::operator=(const Ice& rhs)
+Cure& Cure::operator=(const Cure& rhs)
 {
-	std::cout << "[Ice] - copy assignement operator called -" << std::endl;
+	std::cout << "[CURE] - copy assignement operator called -" << std::endl;
 	if (this != &rhs)
 		this->_type = rhs.getType();
 	return (*this);
 }
 
-
-Ice* Ice::clone() const
+Cure* Cure::clone() const
 {
-	Ice *clone;
+	Cure *clone;
 
 	clone = NULL;
 	return (clone);
 }
 
-void Ice::use(ICharacter& target)
+void Cure::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " << "<name>" << " *" << std::endl; 
+	std::cout << "* heals " << "<name>" << " wounds *" << std::endl; 
 	(void)target;
 	return ;
 }
