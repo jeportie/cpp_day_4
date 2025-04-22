@@ -94,7 +94,8 @@ void Character::unequip(int idx)
 {
 	if (!this->inventory[idx])
 		return ;
-	return ;
+	this->inventory[idx]->saveRemoved();
+	this->inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target)

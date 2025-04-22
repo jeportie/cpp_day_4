@@ -18,7 +18,7 @@
 #include <string>
 
 class Character 
-: ICharacter
+: public ICharacter
 {
 public:
 	Character(void);

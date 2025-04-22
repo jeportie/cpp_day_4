@@ -20,7 +20,11 @@ class ICharacter;
 class AMateria
 {
 protected:
-	std::string	_type;
+	std::string			_type;
+	bool				_wasEquiped;
+	static bool			_destroyed;
+	static AMateria*	_removed[1024];
+	static int			_emptyIndex;
 
 public:
 	AMateria(void);
@@ -34,6 +38,7 @@ public:
 	const std::string&	getType() const; //Returns the materia type
 	virtual AMateria*	clone() const = 0;
 	virtual void		use(ICharacter& target);
+	void				saveRemoved();
 };
 
 #endif  // ***************************************************** AMATERIA_HPP //
