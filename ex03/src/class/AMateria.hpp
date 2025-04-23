@@ -36,6 +36,7 @@ public:
 	AMateria& operator=(const AMateria& rhs);
 
 	const std::string&	getType() const; //Returns the materia type
+	int	getEmptyIndex() const;
 	virtual AMateria*	clone() const = 0;
 	virtual void		use(ICharacter& target);
 	void				saveRemoved();

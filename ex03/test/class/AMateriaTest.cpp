@@ -156,8 +156,8 @@ TEST(AMateriaTest, SaveRemoved)
     
     Mock* trigger = new Mock("trigger");
     trigger->saveRemoved();
-    
-    delete trigger;
+	
+	EXPECT_EQ(trigger->getEmptyIndex(), 2);
 }
 
 // Test for static array bounds

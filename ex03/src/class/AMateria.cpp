@@ -69,8 +69,9 @@ AMateria& AMateria::operator=(const AMateria& rhs)
     return (*this);
 }
 
-const std::string& AMateria::getType() const { return _type; }
+const std::string& AMateria::getType() const { return (_type); }
 
+int AMateria::getEmptyIndex() const { return (_emptyIndex);}
 
 void AMateria::saveRemoved()
 {
@@ -82,7 +83,7 @@ void AMateria::saveRemoved()
 	}
 	else
 	{
-		std::cout << "Warning: Removed Materias array in full" << std::endl;
+		std::cout << "Warning: Removed Materias array is full" << std::endl;
 		delete this;
 	}
 }

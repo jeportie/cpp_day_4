@@ -100,7 +100,7 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (!this->inventory[idx])
+	if (!this->inventory[idx] || idx > 3)
 		return ;
 	this->inventory[idx]->use(target);
 	return;
