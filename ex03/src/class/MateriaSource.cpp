@@ -13,6 +13,7 @@
 #include <iostream>
 #include <ostream>
 #include "MateriaSource.hpp"
+#include "AMateria.hpp"
 #include "IMateriaSource.hpp"
 
 MateriaSource::MateriaSource(void)
@@ -63,12 +64,23 @@ MateriaSource & MateriaSource::operator=(const MateriaSource& rhs)
 }	
 
 
-void MateriaSource::learnMateria(AMateria*)
+void MateriaSource::learnMateria(AMateria* materia)
 {
-	return ;
+	int	i = 0;
+
+	while (this->Materias[i])
+		i++;
+	if (i > 3)
+		return;
+	this->Materias[i] = materia;
 }
 
 AMateria* MateriaSource::createMateria(std::string const& type)
 {
-	return ;
+	for (int i = 0; i < 4; i++)
+	{
+		if (type == this->Materias[i]->getType())
+			return (this->Materias[i]->clone());
+	}
+	return (NULL);
 }

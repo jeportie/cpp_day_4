@@ -11,24 +11,25 @@
 /* ************************************************************************** */
 
 #include "src/class/AMateria.hpp"
-/*#include "src/class/Cure.hpp"*/
-/*#include "src/class/Ice.hpp"*/
+#include "src/class/Cure.hpp"
+#include "src/class/Ice.hpp"
 #include "src/class/ICharacter.hpp"
 #include "src/class/Character.hpp"
+#include "src/class/MateriaSource.hpp"
 
 int main()
 {
-    /*IMateriaSource* src = new MateriaSource();*/
-    /*src->learnMateria(new Ice());*/
-    /*src->learnMateria(new Cure());*/
+    IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
 
     ICharacter* me = new Character("me");
 
-    /*AMateria*   tmp;*/
-    /*tmp = src->createMateria("ice");*/
-    /*me->equip(tmp);*/
-    /*tmp = src->createMateria("cure");*/
-    /*me->equip(tmp);*/
+    AMateria*   tmp;
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("cure");
+    me->equip(tmp);
 
     ICharacter* bob = new Character("bob");
 
@@ -37,7 +38,7 @@ int main()
 
     delete bob;
     delete me;
-    /*delete src;*/
+    delete src;
 
     return 0;
 }
