@@ -30,6 +30,7 @@ public:
     AMateria* createMateria(std::string const& type);
 
 private:
+	AMateria* Materias[4];
 };
 
 #endif  // ************************************************ MATERIASOURCE_HPP //
