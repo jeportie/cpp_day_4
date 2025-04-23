@@ -26,7 +26,6 @@ SRC = \
   src/class/Ice.cpp \
   src/class/Character.cpp \
   src/class/AMateria.cpp \
-  src/class/MateriaSource.cpp \
   src/class/Cure.cpp 
 ### END AUTO GENERATED FILES ###
 
