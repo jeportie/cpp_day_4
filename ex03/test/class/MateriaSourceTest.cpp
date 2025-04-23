@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 13:46:13 by jeportie          #+#    #+#             */
-/*   Updated: 2025/04/23 14:19:21 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:36:31 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #include "../../src/class/AMateria.hpp"
 #include "../../src/class/Ice.hpp"
 
-TEST(CharacterTest, DefaultConstructor)
+TEST(MateriaSourceTest, DefaultConstructor)
 {
     MateriaSource s;
 	for (int i = 0; i < 4; i++)
 		EXPECT_EQ(NULL, s.getMateria(i));
 }
 
-TEST(CharacterTest, CopyConstructor)
+TEST(MateriaSourceTest, CopyConstructor)
 {
     MateriaSource original;
     MateriaSource copy;
@@ -30,7 +30,7 @@ TEST(CharacterTest, CopyConstructor)
 		EXPECT_EQ(NULL, copy.getMateria(i));
 }
 
-TEST(CharacterTest, AssignmentOperator)
+TEST(MateriaSourceTest, AssignmentOperator)
 {
     MateriaSource a;
     MateriaSource b;
@@ -40,5 +40,24 @@ TEST(CharacterTest, AssignmentOperator)
     a = b;
 	EXPECT_EQ("ice", b.getMateria(0)->getType());
 	EXPECT_TRUE(a.getMateria(0) != NULL);
-	EXPECT_EQ("", a.getMateria(0)->getType());
+	EXPECT_EQ("ice", a.getMateria(0)->getType());
+}
+
+TEST(MateriaSourceTest, LearnMateria)
+{
+    MateriaSource a;
+	AMateria* materiaTest = new Ice();    
+	a.learnMateria(materiaTest);
+	EXPECT_EQ("ice", a.getMateria(0)->getType());
+}
+
+TEST(MateriaSourceTest, createMateria)
+{
+	AMateria* test;
+
+    MateriaSource a;
+	AMateria* materiaTest = new Ice();    
+	a.learnMateria(materiaTest);
+	test = a.createMateria("ice");
+	EXPECT_EQ("ice", test->getType());
 }

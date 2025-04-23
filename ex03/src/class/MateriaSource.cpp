@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:05:36 by jeportie          #+#    #+#             */
-/*   Updated: 2025/04/23 13:59:32 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:22:42 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,17 @@ MateriaSource::MateriaSource(void)
 : IMateriaSource()
 {
 	std::cout << "[MateriaSource] - default constructor called - " << std::endl;
+	for (int i = 0; i < 4; i++)
+		this->Materias[i] = NULL;
 }
 
 MateriaSource::MateriaSource(const MateriaSource& src)
 : IMateriaSource(src)
 {
 	std::cout << "[MateriaSource] - copy constructor called - " << std::endl;
+	for (int i = 0; i < 4; i++)
+		this->Materias[i] = NULL;
 	*this = src;
-	return;
 }	
 	
 MateriaSource::~MateriaSource(void)
