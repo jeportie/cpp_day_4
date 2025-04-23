@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:05:36 by jeportie          #+#    #+#             */
-/*   Updated: 2025/04/23 12:20:31 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/04/23 13:59:32 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,11 @@ AMateria* MateriaSource::createMateria(std::string const& type)
 			return (this->Materias[i]->clone());
 	}
 	return (NULL);
+}
+
+AMateria* MateriaSource::getMateria(int i) const
+{
+	if (i < 0 || i > 3)
+		return(NULL);
+	return (this->Materias[i]);
 }
